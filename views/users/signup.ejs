@@ -1,0 +1,54 @@
+<% layout("/Layout/boilerplate") %>
+<title>Sign-Up</title>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 image-container">
+            <img src="/Designer (8).png" alt="Illustration" class="img-fluid">
+            <div style="color: rgb(212, 108, 48);" class="text-overlay">
+                <h2>Turn your ideas into reality.</h2>
+                <p>Start for free and get attractive offers from the community.</p>
+            </div>
+        </div>
+        <div class="col-md-6 form-container">
+            <h1>Sign-Up</h1>
+            <form action="/signup" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter Your Username" class="form-control" required>
+                    <div class="valid-feedback">Title Looks Good</div>
+                    <div class="invalid-feedback">Username is required!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email" class="form-control" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please enter a valid email!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Your Password" class="form-control" required>
+                    <div class="valid-feedback">Looks Good</div>
+                    <div class="invalid-feedback">Please enter a password!</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <div class="mt-3">
+                        <a class="custom-link" href="/login">Already have an Account</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .image-container {
+        position: relative;
+    }
+    .text-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+    }
+</style>

@@ -1,0 +1,55 @@
+<% layout("/Layout/boilerplate") %>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <h2>Here you can post the details of your Hotels</h2>
+
+    <form method="POST" action="/listings/new" enctype="multipart/form-data" novalidate class="needs-validation">
+        <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="listing[title]" placeholder="Enter the title of your house" class="form-control" required>
+        <div class="valid-feedback">Title Looks Good!</div>
+        <div class="invalid-feedback">Please Enter Title!</div>
+      </div>
+      <hr>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" type="text" name="listing[description]"
+          placeholder="Enter the Description of your house" required></textarea>
+        <div class="valid-feedback">Description looks good</div>
+        <div class="invalid-feedback">Please write Description in 200 words!</div>
+      </div>
+      <hr>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload an Image</label>
+        <input type="file" name="listing[image]" class="form-control" required>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="mb-3 col-md-8">
+          <label for="price" class="form-label">Enter Your Price</label>
+          <input type="text" name="listing[price]" placeholder="Enter the Price of your house" class="form-control" required>
+          <div class="invalid-feedback">Please Enter the valid Price</div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location" name="listing[location]" required>
+        </div>
+      </div>
+      <hr>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Enter the country</label>
+        <input type="text" name="listing[country]" placeholder="Example:- INDIA" class="form-control" required>
+        <div class="invalid-feedback">Please enter the country name</div>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-dark">Post</button>
+    </form>
+    <br> <br> <br>
+  </div>
+</div>

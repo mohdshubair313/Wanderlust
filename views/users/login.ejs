@@ -1,0 +1,46 @@
+<% layout("/Layout/boilerplate") %>
+<title>Login Page</title>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 image-container">
+            <img src="/Designer (9).png" alt="Illustration" class="img-fluid">
+            <div style="color: rgb(212, 108, 48);" class="text-overlay">
+                <h2>Turn your ideas into reality.</h2>
+                <p>Start for free and get attractive offers from the community.</p>
+            </div>
+        </div>
+        <div class="col-md-6 form-container">
+            <h1>Login Your Account</h1>
+
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter Your Username" class="form-control" required>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Your Password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+                <div class="mt-3">
+                    <a class="custom-link" href="/signup">Don't have an account yet?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .image-container {
+        position: relative;
+    }
+    .text-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+    }
+</style>

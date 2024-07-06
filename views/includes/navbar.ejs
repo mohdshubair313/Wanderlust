@@ -1,0 +1,71 @@
+<style>
+    .btn-search {
+        background-color: #fe424d;
+        color: white;
+        border-radius: 25px;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .btn-search:hover {
+        background-color: #fe424d;
+        color: white;
+    }
+
+    .btn-search i {
+        margin-right: 0.5rem;
+    }
+
+    .search-input {
+        border-radius: 25px;
+        padding: 0.5rem 4rem 0.2rem 3rem;
+        margin-right: 3rem;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings">
+            <img class="logo-img" src="/Designer__5_-removebg-preview.png" alt="WanderLust-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings"><b style="opacity: 0.8;">Listings</b></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings/new"><b style="opacity: 0.8;">Wanderlust your home</b></a>
+                </li>
+                <div class="navbar-nav ms-auto">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2 search-input" type="search" placeholder="   Search">
+                        <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                    </form>
+                </div>
+            </ul>
+
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <% if (!currUser) { %>
+                            <li><a class="dropdown-item" href="/signup"><b>SignUp</b></a></li>
+                            <li><a class="dropdown-item" href="/login"><b>Login</b></a></li>
+                            <% } %>
+                                <% if (currUser) { %>
+                                    <li><a class="dropdown-item" href="/logout"><b>Log Out</b></a></li>
+                                    <% } %>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

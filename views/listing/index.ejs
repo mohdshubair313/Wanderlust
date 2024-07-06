@@ -1,0 +1,233 @@
+<% layout("/Layout/boilerplate") %>
+<style>
+    #icons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .icon {
+        text-align: center;
+        margin-right: 2.5rem;
+        margin-top: 2rem;
+        transition: transform 0.2s ease-in-out;
+        opacity: 0.7;
+    }
+
+    .icon:hover {
+        cursor: pointer;
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    .icon p {
+        font-size: 0.7rem
+    }
+
+    .tax-info {
+        display: none;
+    }
+
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.5rem;
+        margin-left: 60rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+    }
+</style>
+
+<div id="icons">
+    <div class="icon">
+        <form action='/listings/searchpost/:_id' method="POST">
+            <input type="hidden" name="category" value="Trending">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Amazing Pools">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-water-ladder"></i>
+                <p>Amazing Pools</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Amazing views">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-binoculars"></i>
+                <p>Amazing Views</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Farms">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farms</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Tropical">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-cannabis"></i>
+                <p>Tropical</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost/:" method="POST">
+            <input type="hidden" name="category" value="Beach">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <p>Beach</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Country Side">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-city"></i>
+                <p>Country Side</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Castle">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castle</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Top cities">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-building-circle-check"></i>
+                <p>Top cities</p>
+            </button>
+        </form>
+    </div>
+    <div class="icon">
+        <form action="/listings/searchpost" method="POST">
+            <input type="hidden" name="category" value="Mountaneous Region">
+            <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer;">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p>Mountaneous Region</p>
+            </button>
+        </form>
+    </div>
+
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Show Every GST price</label>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <% for (let listing of allListings) { %>
+            <div class="col">
+                <div class="card h-100 listing-card shadow">
+                    <a style="text-decoration: none; color: black;" href="/listings/<%= listing._id %>">
+                        <img src="<%= listing.image.url %>" class="card-img-top fixed-image"
+                            alt="<%= listing.title %>">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= listing.title %>
+                                </b> <br>
+                                <b>Price:&nbsp; &nbsp;<i class="fa-solid fa-indian-rupee-sign"></i></b>
+                                <%= listing.price.toLocaleString("en-EN")%> /night
+                            </p> <br>
+                            <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                            </p>
+                            <a href="/listings/<%= listing._id %>" class="btn btn-danger">See Full Details</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</div>
+
+
+<script>
+     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for (let info of taxInfo) {
+            if (info.style.display != "inline") {
+                info.style.display = "inline";
+            } else {
+                info.style.display = "none";
+            }
+        }
+    })
+
+
+    document.querySelectorAll('.search-form').forEach(form => {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const category = form.getAttribute('data-category');
+  
+        fetch('/searchpost', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ category })
+        })
+        .then(response => response.json())
+        .then(data => {
+          const listingsContainer = document.getElementById('listings-container');
+          listingsContainer.innerHTML = '';
+  
+          data.forEach(listing => {
+            const listingElement = document.createElement('div');
+            listingElement.className = 'col listing-item';
+            listingElement.innerHTML = `
+              <div class="card h-100 listing-card shadow">
+                <a style="text-decoration: none; color: black;" href="/listings/${listing._id}">
+                  <img src="${listing.image.url}" class="card-img-top fixed-image" alt="${listing.title}">
+                  <div class="card-img-overlay"></div>
+                  <div class="card-body">
+                    <p class="card-text">
+                      <b>${listing.title}</b> <br>
+                      <b>Price:&nbsp; &nbsp;<i class="fa-solid fa-indian-rupee-sign"></i></b>
+                      ${listing.price.toLocaleString("en-EN")} /night
+                    </p> <br>
+                    <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                    </p>
+                    <a href="/listings/${listing._id}" class="btn btn-danger">See Full Details</a>
+                  </div>
+                </a>
+              </div>
+            `;
+            listingsContainer.appendChild(listingElement);
+          });
+        })
+        .catch(error => {
+          console.error('Error during search:', error);
+        });
+      });
+    });
+  
+  </script>
